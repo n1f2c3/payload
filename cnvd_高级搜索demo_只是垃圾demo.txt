@@ -1,0 +1,78 @@
+import requests
+import re
+class cnvd:
+    page=0
+    max=100
+    page_disco=20
+    key=""
+    pageurl=""
+    result=[]
+    session_sess=None
+    html_object=None
+    header={
+            "Host": "www.cnvd.org.cn",
+            "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36",
+            "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
+            "Cookie":"__jsluid=40ab12362f8deba67c19cb914d7ad8d0; bdshare_firstime=1559033004000; JSESSIONID=E6480271505D2A199BCAE7FF5D6537FD",
+            "Content-Type":"application/x-www-form-urlencoded",
+            "Origin":"http://www.cnvd.org.cn",
+            "Referer":"http://www.cnvd.org.cn/flaw/list.htm?flag=ture",
+
+
+        }
+    data={
+            "keyword":"%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C",
+            "max": "100",
+            "offset":"0",
+
+        }
+
+    def __init__(self,key):
+        if key ==None:
+            selfkey="11"
+        self.key=key
+
+        self.session_sess=requests.session()
+        self.__getsession()
+    def __setData(self,key,max,page):
+        if key==None:
+            self.key="123"
+        self.data["keyword"]="%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"
+        self.data["max"]=max
+        self.data["offset"]=page
+    def __getData(self):
+        return self.data
+
+    def __getsession(self):
+        self.session_sess.get("https://www.cnvd.org.cn/", headers=self.header)
+
+    def __requestPage(self):
+        self.__setData(key=self.key,max=self.max,page=self.page)
+        data=self.__getData()
+        print(data)
+        self.html_object = self.session_sess.post("http://www.cnvd.org.cn/flaw/list.htm?flag=true", headers=self.header, data=data).text
+        self.result.append(self.html_object)
+
+    def __isendpage(self):
+        return re.findall("Next",self.html_object).__len__()
+
+    def __swtichpage(self):
+           self.page+=20
+    def run(self):
+        while True:
+            self.__requestPage()
+            if self.__isendpage()!=0:
+                self.__swtichpage()
+            else:
+
+                break
+        f=open("result.txt","a")
+        for i in self.result:
+
+            f.write(i)
+        # print(self.result)
+cc=cnvd("123")
+cc.run()
+
+
+
