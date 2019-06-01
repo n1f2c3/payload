@@ -3,3 +3,5 @@
 Cisco #RV320 / #RV325 RCE   shodan port:"8007"  source https://mp.weixin.qq.com/s/-Q7v1XNrKzu6eTPHpqaGRg
 iSCSI集群 port:3260×00AuthMethod=None   sorce https://mp.weixin.qq.com/s/yRhHgFZksFvOqXG3Xy-wpA
 cisco PI 语法未找到 #source https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20190515-pi-rce
+InfluxDB 未安装,未采集  #source https://mp.weixin.qq.com/s/8DM2N4jXv1D_hGpIGteTXw     ----https://github.com/nginx/njs/issues/159
+指纹,url特征,socket链接数据包返回特征banner，html特征,端口特征,
