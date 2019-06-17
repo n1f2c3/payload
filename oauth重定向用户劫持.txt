@@ -1,1 +1,135 @@
 #回去再写,申请个百度得oauth key ，没有漏洞,仅仅演示交互过程,劫持得是哪些数据代码来源网络,不想写代码
+####callback.php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: tao
+ * Date: 2016-09-13
+ * Time: 20:50
+ */
+
+session_start();
+require_once 'config.php';
+require_once 'dohttps.php';
+$code = $_GET['code'];
+if($code){
+    $getaccesstoken_url = "https://openapi.baidu.com/oauth/2.0/token?grant_type=authorization_code&code=$code&client_id=$api_key&client_secret=$serect_key&redirect_uri=$redirect_url";
+    $httpsobj = new doHttps();
+    $https_res = $httpsobj->getdata($getaccesstoken_url);
+    $accesstoken = $https_res['access_token'];
+    $userinfo_url = $apibase_url.'passport/users/getLoggedInUser'.'?access_token='.$accesstoken;
+    $user_res = $httpsobj->getdata($userinfo_url);
+    $smallpic = $user_res['portrait'];
+    $nickname = $user_res['uname'];
+    $_SESSION['accesstoken'] = $accesstoken;
+    $_SESSION['nickname'] = $nickname;
+    $_SESSION['smallpic'] = $smallpic;
+}else{
+    echo "<javascript>alert('授权失败')</javascript>";
+}
+header("Location: ".'index.php');
+
+
+###config.php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: tao
+ * Date: 2016-09-13
+ * Time: 23:14
+ */
+$api_key = 'saA5WL9lPi24eGTfiEuUx74r';
+$serect_key = 'ZCFdiDhabq9eWs6zWNyEASiRugAWHkDv';
+$redirect_url = 'http://localhost/oauth/baidulogin/baidulogin/callback.php';
+$apibase_url = 'https://openapi.baidu.com/rest/2.0/';
+$logout = 'http://www.baidu.com';
+
+###dohttps.php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: tao
+ * Date: 2016-09-14
+ * Time: 16:14
+ */
+
+class doHttps{
+    public  $ch;
+    function getdata($url){
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,FALSE);
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch,CURLOPT_HEADER,0);
+        $temp = curl_exec($ch);
+        if($temp === FALSE){
+            return false;
+        }
+        $output = json_decode($temp,TRUE);
+        return $output;
+        curl_close($ch);
+    }
+}
+
+####index.php
+<?php
+//授权回调页面http://localhost/oauth/baidulogin/baidulogin/callback.php
+//http://developer.baidu.com/console#manage
+session_start();
+require_once 'config.php';
+$accesstoken = $_SESSION['accesstoken'];
+$logout_url = "https://openapi.baidu.com/connect/2.0/logout?access_token=$accesstoken&next=$logout";
+
+?>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+welcome```````
+<hr>
+<?php echo $_SESSION['nickname'] ?>
+<hr>
+<img src=" http://tb.himg.baidu.com/sys/portraitn/item/<?php echo $_SESSION['smallpic']?>" alt="">
+<hr>
+<a href="logout.php">loginout</a>
+</body>
+
+</html>
+
+###login.php
+<?php
+session_start();
+require_once 'config.php';
+$getcode_url = "http://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=$api_key&redirect_uri=$redirect_url";
+?>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+点我点我<a href="<?php echo $getcode_url ?>"><img src="baidu.jpg" alt="使用百度账号登录"></a>
+</body>
+</html>
+
+###logout.php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: tao
+ * Date: 2016-09-14
+ * Time: 17:59
+ */
+session_start();
+require_once 'config.php';
+$accesstoken = $_SESSION['accesstoken'];
+$logout_url = "https://openapi.baidu.com/connect/2.0/logout?access_token=$accesstoken&next=$logout";
+session_unset();
+
+header("Location:$logout_url");
+
+
+##有点累了,模拟一波apiket泄露
+#source:源代码忘记出自哪里了,
