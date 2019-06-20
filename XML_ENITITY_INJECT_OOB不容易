@@ -28,6 +28,7 @@ GET /2.JS
 HOST:A.COM
 A.COM  2.js取出来缓存在服务器上
 
+ip 1.1.1.1
 GET /2.JS
 HOST:B.COM
 
