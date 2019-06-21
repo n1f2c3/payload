@@ -1,4 +1,4 @@
 rpo是不是 叫反射跨越外部路径...
 
-相对路径加载静态文件,造成可以访问外部静态文件&&php在pathinfo模式下&&能反射数据到静态文件css或者js中,
+相对路径加载静态文件,造成可以访问外部静态文件&&php在pathinfo模式下&&能反射数据到静态文件css或者js中,或者修改得文件缓存在浏览器中..不明确
 #source:http://rui0.cn/archives/891 顺带pathinfo模式下bypasswaf,大佬得世界,太牛了,吸收不了
