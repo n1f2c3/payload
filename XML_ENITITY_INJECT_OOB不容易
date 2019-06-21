@@ -25,7 +25,7 @@ ubuntu
 #apt-get install  language-pack-en-base 
 25  add-apt-repository ppa:ondrej/php 
 26  add-apt-repository ppa:ondrej/apache2
-test apt-get install  php5   
+test apt-get install  php5.6   
 
 
 
