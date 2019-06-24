@@ -1,0 +1,84 @@
+import re
+import xlwt
+import pandas as pd
+import os
+from os import path
+d = path.dirname(__file__)
+import xlrd
+#统计表的输入
+name="E:\\cncert\\XX统计 6.13.xlsx"
+data =pd.read_excel(name)['单位名称']
+
+#re.match 匹配中文字符会出现问题,re.search暂时还没有发现,四个字符的县区没有做处理
+#我脑壳想不到一种好的处理方式,只用用if else来写,截断字符串中的字符去和xls中的一列去做比较,但是截断不精确
+
+flag=0
+dictt={}
+zz=open("zhixia",'r',encoding='UTF-8')
+
+xianqu=zz.readlines()
+# baogaopath=input("请输入报告路劲:例如C:\\Users\\lichen_worker\\Documents\\Works\\cncertshang\\abc\\abc")
+baogaopath="E:\\报告\\报告"
+for root,dirs,files in os.walk(baogaopath):
+    for i in files:
+        if re.match('CNVD-关于',i)!=None:
+            flag=flag+1
+            dictt[i]=flag
+
+for k,v in dictt.items():
+    # f1=["CNVD-关于猫猫"]
+    if re.match('CNVD-关于',k):
+        if re.match("CNVD-关于XX",k):
+           if re.match("CNVD-关于XX市",k):
+            guanjianzi=k[10:12]
+            for xianququ in xianqu:
+                if re.search(guanjianzi,xianququ):
+                    guanjianzi=k[12:14]
+
+                    break
+                else:
+                    guanjianzi=k[10:12]
+            # print(guanjianzi)
+            for m in data:
+                    # print(guanjianzi)
+                    if re.search(guanjianzi,m):
+                        print("提交过\n" + m)
+                        print("未提交\n" + k)
+
+           #匹配天津
+           else:
+               guanjianzi=k[9:11]
+               for xianququ in xianqu:
+                   if re.search(guanjianzi,xianququ):
+                       guanjianzi=k[11:14]
+                       break
+                   else:
+                       guanjianzi=k[9:11]
+               # print(guanjianzi)
+               for m in data:
+
+                   if re.search(guanjianzi,m):
+                       print("提交过\n"+m)
+                       print("未提交\n"+k)
+
+
+
+
+        # 关于
+        else:
+            guanjianzi=k[7:9]  #去后面两个如果不是县区,便提取和总得比较
+            for xianququ in xianqu:
+                if re.search(guanjianzi,xianququ):
+                    #如果是县区
+                    guanjianzi=k[10:12]
+                    break
+                else:
+                    guangjianzi=k[9:11]
+            # print(guanjianzi)
+            for m in data:
+                # print(guanjianzi)
+                # print(m)
+                if re.search(guanjianzi,m):
+                    print("提交过\n" + m)
+                    print("未提交\n" + k)
+
