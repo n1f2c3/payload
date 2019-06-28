@@ -1,1 +1,5 @@
-#提取文章关键词率和一个阈值,moniter某些文章..英文和汉语,..通过webhook反馈
+#提取文章关键词率和一个阈值,moniter某些文章..英文和汉语,..通过webhook反馈，失败...
+
+域名常识
+域名ttl存活缓存时间 nslookup -d example.com
+域名区域,域名注册商
