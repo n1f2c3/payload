@@ -4,15 +4,19 @@
 <script>
   document.getElementById('test').innerHTML += returnCitySN["cip"] + ',' + returnCitySN["cname"]
 </script>
-
-
-<p id="test">aa</p>
 <script>
   x = new XMLHttpRequest;
   x.onload = function() {
     document.write(this.responseText)
   };
   x.open("GET", "file:///etc/hosts");
+  x.send();
+  </script>
+
+<p id="test">aa</p>
+<script>
+  x = new XMLHttpRequest;
+   x.open("GET", "file:///etc/hosts");
   x.send();
   document.getElementById("test").innerHTML = x.responseText;
 </script>
