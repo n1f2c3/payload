@@ -19,3 +19,7 @@ X-Real-IP
 Orgion
 Vary
 Referer：无法
+X-Host
+X-Forwarded-Server:
+X-Forwarded-Scheme
+X-Original-URL
