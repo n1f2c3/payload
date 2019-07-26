@@ -1,4 +1,4 @@
-#回去再写,申请个百度得oauth key ，没有漏洞,仅仅演示交互过程,劫持得是哪些数据代码来源网络,不想写代码
+#回去再写,申请个百度得oauth key 
 ####callback.php
 <?php
 /**
@@ -131,5 +131,4 @@ session_unset();
 header("Location:$logout_url");
 
 
-##有点累了,模拟一波apiket泄露
 #source:源代码忘记出自哪里了,
