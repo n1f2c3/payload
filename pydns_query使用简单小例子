@@ -1,0 +1,18 @@
+import dns.resolver
+domain="baidu.com"
+f=open("url.txt","r")
+zz=f.readlines()
+nn=open("ip.txt",'w+')
+
+    # dns.resolver("8.8.8.8")
+my_resolver=dns.resolver.Resolver()
+my_resolver.namservers=['8.8.8.8']
+for urll in zz:
+    try:
+        A = my_resolver.query(urll.strip(), 'A')
+        for i in A.response.answer:
+            for j in i.items:
+               nn.write (urll.strip()+"--------------------------------------"+j.address+"\n")
+               nn.flush()
+    except:
+        print(urll)
