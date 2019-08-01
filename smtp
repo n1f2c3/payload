@@ -1,0 +1,7 @@
+telnet xxxx 2525
+helo a.com
+auth login
+cm9vdA==
+YjdPaldlZ1dmOThjWmY0VQ==
+mail from:< user01@test.smtp.org>
+rcpt to:<xxxxx@qq.com>
