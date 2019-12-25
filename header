@@ -21,6 +21,6 @@ Referer: 127.0.0.1
 X-Host: 127.0.0.1
 X-Forwarded-Server: 127.0.0.1
 X-Forwarded-Scheme: 127.0.0.1
-X-Original-URL: path
+X-Original-URL: path  Drupal  PHP框架Symfony
 X-Rewrite-URL: path
 %0a%0dLocation:%20http://evail.com
