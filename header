@@ -1,7 +1,7 @@
 REMOTE_ADDR: 127.0.0.1
 Real_ip: 127.0.0.1
 X-Forwarded-For: 127.0.0.1
-x-forwarded-for: 127.0.0.1
+x-forwarded-HOST: 127.0.0.1   durpa缓存
 x-remote-IP: 127.0.0.1
 x-remote-ip: 127.0.0.1
 x-client-ip: 127.0.0.1
@@ -21,6 +21,6 @@ Referer: 127.0.0.1
 X-Host: 127.0.0.1
 X-Forwarded-Server: 127.0.0.1
 X-Forwarded-Scheme: 127.0.0.1
-X-Original-URL: path  Drupal  PHP框架Symfony
+X-Original-URL: path  Drupal  PHP框架Symfony  u缓存
 X-Rewrite-URL: path
 %0a%0dLocation:%20http://evail.com
